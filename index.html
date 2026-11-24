@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Norman Schönherr · Projekte & Statistik</title>
+  <meta name="description" content="Open-Source-Projekte von Norman Schönherr aus Dresden: Desktop-Apps, KI-Workflows mit Claude und Automatisierung. Mit Live-Statistik zu Downloads, Updates und Traffic.">
+  <meta property="og:title" content="Norman Schönherr · Projekte & Statistik">
+  <meta property="og:description" content="Desktop-Apps, KI-Workflows und Automatisierung. Mit Live-Statistik.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%238957e5'/><text x='16' y='22' font-size='16' font-family='monospace' text-anchor='middle' fill='white'>NS</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <a class="skip" href="#stats">Zur Statistik springen</a>
+
+  <header class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow mono">~/dresden $ whoami</p>
+      <h1>Norman Schönherr</h1>
+      <p class="tagline">Ich baue Tools, die nerviges Zeug automatisieren: Desktop-Apps, KI-Workflows mit Claude und kleine Helfer für jeden Tag.</p>
+      <nav class="links" aria-label="Profile">
+        <a class="btn primary" href="https://github.com/normannormalmann">GitHub</a>
+        <a class="btn" href="https://normanschoenherr.de">normanschoenherr.de</a>
+        <a class="btn" href="https://buymeacoffee.com/normanschou">Buy me a coffee</a>
+      </nav>
+      <dl class="hero-stats" id="hero-stats" aria-live="polite">
+        <div><dt>Installationen</dt><dd class="mono" data-hero="installs">–</dd></div>
+        <div><dt>Update-Anfragen</dt><dd class="mono" data-hero="updates">–</dd></div>
+        <div><dt>Öffentliche Repos</dt><dd class="mono" data-hero="repos">–</dd></div>
+        <div><dt>Sterne</dt><dd class="mono" data-hero="stars">–</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap section" id="projects" aria-labelledby="projects-h">
+      <div class="section-head">
+        <h2 id="projects-h">Projekte</h2>
+        <p class="muted">Eigene Repositories, sortiert nach Nutzung. Die Linie zeigt die Seitenaufrufe der letzten 30 Tage.</p>
+      </div>
+      <div class="cards" id="project-cards"></div>
+    </section>
+
+    <section class="wrap section" id="stats" aria-labelledby="stats-h">
+      <div class="section-head">
+        <h2 id="stats-h">Statistik</h2>
+        <p class="muted" id="data-note">Daten werden geladen …</p>
+      </div>
+
+      <div class="toolbar" role="group" aria-label="Filter">
+        <label class="field">
+          <span>Repository</span>
+          <select id="repo-select"><option value="">Alle Repos</option></select>
+        </label>
+        <div class="field">
+          <span id="range-label">Zeitraum</span>
+          <div class="seg" role="radiogroup" aria-labelledby="range-label" id="range">
+            <button type="button" data-days="14">14 T</button>
+            <button type="button" data-days="30" aria-pressed="true">30 T</button>
+            <button type="button" data-days="90">90 T</button>
+            <button type="button" data-days="365">1 J</button>
+            <button type="button" data-days="0">Alles</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="kpis" id="kpis"></div>
+
+      <div class="grid2">
+        <article class="panel">
+          <h3>Downloads pro Tag</h3>
+          <p class="muted small">Neue Installer-Downloads und Update-Checks, berechnet aus den täglichen Zählerständen.</p>
+          <div class="chart"><canvas id="chart-downloads" role="img" aria-label="Balkendiagramm der Downloads pro Tag"></canvas></div>
+        </article>
+        <article class="panel">
+          <h3>Traffic pro Tag</h3>
+          <p class="muted small">Seitenaufrufe, eindeutige Besucher und Git-Klone.</p>
+          <div class="chart"><canvas id="chart-traffic" role="img" aria-label="Liniendiagramm von Aufrufen, Besuchern und Klonen"></canvas></div>
+        </article>
+        <article class="panel">
+          <h3>Downloads je Release</h3>
+          <p class="muted small">Gesamtstand. Ein Update-Check zählt beim Release, das zu dem Zeitpunkt aktuell war.</p>
+          <div class="chart"><canvas id="chart-releases" role="img" aria-label="Balkendiagramm der Downloads je Release"></canvas></div>
+        </article>
+        <article class="panel">
+          <h3>Sterne & Follower</h3>
+          <p class="muted small">Verlauf seit Beginn der Aufzeichnung.</p>
+          <div class="chart"><canvas id="chart-stars" role="img" aria-label="Liniendiagramm der Sterne und Follower"></canvas></div>
+        </article>
+      </div>
+
+      <div class="grid2">
+        <article class="panel">
+          <h3>Woher die Besucher kommen</h3>
+          <p class="muted small">Verweisende Seiten, letzte 14 Tage laut GitHub.</p>
+          <div class="table-wrap"><table id="table-referrers"><thead><tr><th>Quelle</th><th>Aufrufe</th><th>Besucher</th></tr></thead><tbody></tbody></table></div>
+        </article>
+        <article class="panel">
+          <h3>Meistbesuchte Seiten</h3>
+          <p class="muted small">Pfade, letzte 14 Tage laut GitHub.</p>
+          <div class="table-wrap"><table id="table-paths"><thead><tr><th>Seite</th><th>Aufrufe</th><th>Besucher</th></tr></thead><tbody></tbody></table></div>
+        </article>
+      </div>
+
+      <article class="panel">
+        <h3>Alle Repositories</h3>
+        <p class="muted small">Aufrufe und Klone im gewählten Zeitraum, sonst Gesamtstand. Klick auf eine Spalte sortiert.</p>
+        <div class="table-wrap">
+          <table id="table-repos" class="sortable">
+            <thead><tr>
+              <th data-key="repo">Repository</th>
+              <th data-key="stars">Sterne</th>
+              <th data-key="views">Aufrufe</th>
+              <th data-key="clones">Klone</th>
+              <th data-key="installs">Installationen</th>
+              <th data-key="update_checks">Update-Checks</th>
+              <th data-key="pull_requests">PRs</th>
+              <th data-key="pushed">Letzter Push</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </article>
+
+      <details class="panel faq">
+        <summary>Wie werden die Zahlen erhoben?</summary>
+        <ul>
+          <li>Ein GitHub-Workflow ruft jeden Morgen die GitHub-API ab und hängt die Werte an CSV-Dateien im Ordner <a href="https://github.com/normannormalmann/normannormalmann.github.io/tree/main/data"><code>data/</code></a> an.</li>
+          <li><b>Installationen</b> sind Downloads von Installer-Dateien (.exe, .AppImage usw.). <b>Update-Checks</b> sind Abrufe der Datei <code>latest.yml</code>, mit der installierte Apps nach neuen Versionen fragen.</li>
+          <li>GitHub liefert Downloads nur als Gesamtzähler. Die Werte pro Tag sind die Differenz zwischen zwei Tagesständen und gibt es erst ab Beginn der Aufzeichnung.</li>
+          <li>Aufrufe und Klone speichert GitHub nur 14 Tage. Ab Beginn der Aufzeichnung bleiben sie hier dauerhaft erhalten. Klone enthalten auch automatische Klone durch CI und Bots.</li>
+        </ul>
+      </details>
+    </section>
+  </main>
+
+  <footer class="wrap footer muted small">
+    <span>© Norman Schönherr · Dresden</span>
+    <span id="updated">–</span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
