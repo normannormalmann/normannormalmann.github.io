@@ -79,6 +79,28 @@
   "pushed": "2026-10-20"
  },
  {
+  "repo": "normannormalmann",
+  "description": "Mein GitHub-Profil",
+  "language": "Python",
+  "topics": [],
+  "url": "https://github.com/normannormalmann/normannormalmann",
+  "homepage": "",
+  "fork": false,
+  "created": "2026-11-24",
+  "pushed": "2026-11-24"
+ },
+ {
+  "repo": "normannormalmann.github.io",
+  "description": "Projekte & Live-Statistik von Norman Schönherr",
+  "language": "JavaScript",
+  "topics": [],
+  "url": "https://github.com/normannormalmann/normannormalmann.github.io",
+  "homepage": "https://normannormalmann.github.io",
+  "fork": false,
+  "created": "2026-11-24",
+  "pushed": "2026-11-24"
+ },
+ {
   "repo": "streambert-german",
   "description": "A cross-platform Electron Desktop App to stream and download any Movie, TV Series or Anime in the World. Zero Ads and Tracking implementing german streams",
   "language": "JavaScript",

@@ -1,6 +1,18 @@
 {
  "user": "normannormalmann",
- "updated_at": "2026-11-24T11:33:18Z",
- "traffic_ok": true,
- "warnings": []
+ "updated_at": "2026-11-24T11:38:04Z",
+ "traffic_ok": false,
+ "warnings": [
+  "Kein Zugriff auf Traffic von awesome-claude-skills (Token ohne Traffic-Recht)",
+  "Kein Zugriff auf Traffic von Claude-Motionreel-Generator-CMG (Token ohne Traffic-Recht)",
+  "Kein Zugriff auf Traffic von Claude-Multiverse (Token ohne Traffic-Recht)",
+  "Kein Zugriff auf Traffic von hubspot-skills (Token ohne Traffic-Recht)",
+  "Kein Zugriff auf Traffic von meta-ads-mcp-secure-launcher (Token ohne Traffic-Recht)",
+  "Kein Zugriff auf Traffic von normannormalmann (Token ohne Traffic-Recht)",
+  "Kein Zugriff auf Traffic von normannormalmann.github.io (Token ohne Traffic-Recht)",
+  "Kein Zugriff auf Traffic von streambert-german (Token ohne Traffic-Recht)",
+  "Kein Zugriff auf Traffic von timebutler_auto (Token ohne Traffic-Recht)",
+  "Kein Zugriff auf Traffic von ultrastar-dlh (Token ohne Traffic-Recht)",
+  "Kein Zugriff auf Traffic von winget-pkgs (Token ohne Traffic-Recht)"
+ ]
 }
